@@ -4,37 +4,37 @@
  */
 
 define([
-    'uiComponent',
-    'ko'
-], function (Component, ko) {
+    'ko',
+    'uiComponent'
+], function (ko, Component) {
     'use strict';
     return Component.extend({
         defaults: {
             template: 'Magento_Cms/sidebar-cities',
             cityStores: ko.observableArray([]),
+            selectedCity: ko.observable(""),
             exports: {
                 cityStores: "storesSidebar:cityStores"
             },
         },
 
-        selectedCity: ko.observable(""),
-
         initialize: function () {
             this._super();
-            this.selectedCity.subscribe( selectedCity => console.log(selectedCity));
 
             let self = this,
                 stores = this.stores;
 
-            this.selectedCity.subscribe( selectedCity => {
+            this.selectedCity.subscribe(selectedCity => {
                 for (let key in stores) {
                     if (selectedCity.id === key) {
                         self.cityStores(stores[key]);
-                        console.log(self.cityStores());
                     }
                 }
             });
+
+            return this;
         },
+
         cities: [
             {
                 "id": "83664",
@@ -148,7 +148,27 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/vinnitsya/brocard-trts-megamoll-164",
                     "phone": "+380432659255",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
+                },
+                {
+                    "id": "87",
+                    "name": "MAC",
+                    "mall": "ТЦ SKY PARK",
+                    "address": "вул. М. Оводова, 51",
+                    "link": "http://upgrade-brocard.loc/ua/shops/vinnitsya/brocard-tts-sky-park-686",
+                    "phone": "+380432655556",
+                    "schedule": "10:00 - 21:00",
+                    "imageUrl": "Magento_Cms/images/three.jpeg"
+                },
+                {
+                    "id": "87",
+                    "name": "KIEHLS",
+                    "mall": "ТЦ SKY PARK",
+                    "address": "вул. М. Оводова, 51",
+                    "link": "http://upgrade-brocard.loc/ua/shops/vinnitsya/brocard-tts-sky-park-686",
+                    "phone": "+380432655556",
+                    "schedule": "10:00 - 21:00",
+                    "imageUrl": "Magento_Cms/images/four.jpeg"
                 },
                 {
                     "id": "87",
@@ -158,8 +178,39 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/vinnitsya/brocard-tts-sky-park-686",
                     "phone": "+380432655556",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
-                }
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
+                },
+                {
+                    "id": "87",
+                    "name": "KIEHLS",
+                    "mall": "ТЦ SKY PARK",
+                    "address": "вул. М. Оводова, 51",
+                    "link": "http://upgrade-brocard.loc/ua/shops/vinnitsya/brocard-tts-sky-park-686",
+                    "phone": "+380432655556",
+                    "schedule": "10:00 - 21:00",
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
+                },
+                {
+                    "id": "87",
+                    "name": "BROCARD",
+                    "mall": "ТЦ SKY PARK",
+                    "address": "вул. М. Оводова, 51",
+                    "link": "http://upgrade-brocard.loc/ua/shops/vinnitsya/brocard-tts-sky-park-686",
+                    "phone": "+380432655556",
+                    "schedule": "10:00 - 21:00",
+                    "imageUrl": "Magento_Cms/images/four.jpeg"
+                },
+                {
+                    "id": "87",
+                    "name": "No BROCARD",
+                    "mall": "ТЦ SKY PARK",
+                    "address": "вул. М. Оводова, 51",
+                    "link": "http://upgrade-brocard.loc/ua/shops/vinnitsya/brocard-tts-sky-park-686",
+                    "phone": "+380432655556",
+                    "schedule": "10:00 - 21:00",
+                    "imageUrl": "Magento_Cms/images/three.jpeg"
+                },
+
             ],
             "83660": [
                 {
@@ -170,7 +221,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/dnipro/brocard-trts-karavan-140",
                     "phone": "+380567479120",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "46",
@@ -180,7 +231,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/dnipro/mac-tk-passage-392",
                     "phone": "+380563760857",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "88",
@@ -190,7 +241,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/dnipro/brocard-tk-passage-688",
                     "phone": "+380563760855",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "118",
@@ -200,7 +251,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/dnipro/brocard-trk-most-siti-838",
                     "phone": "+380567903022",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "121",
@@ -210,7 +261,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/dnipro/brocard-bfk-sascade-plaza-844",
                     "phone": "+380672357724",
                     "schedule": "11:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 }
             ],
             "83661": [{
@@ -221,7 +272,7 @@ define([
                 "link": "http://upgrade-brocard.loc/ua/shops/zhitomir/brocard-trts-global-ua-146",
                 "phone": "+380412512411",
                 "schedule": "10:00 - 21:00",
-                "imageUrl": ""
+                "imageUrl": "Magento_Cms/images/one.jpeg"
             }],
             "83662": [
                 {
@@ -232,7 +283,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/zaporizhzhya/brocard-trk-city-mall-185",
                     "phone": "+380612804462",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "82",
@@ -242,7 +293,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/zaporizhzhya/brocard-tts-ukraina-67",
                     "phone": "+380612893680",
                     "schedule": "9:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 }
             ],
             "83663": [{
@@ -253,9 +304,29 @@ define([
                 "link": "http://upgrade-brocard.loc/ua/shops/ivano-frankivsk/brocard-trk-panorama-plaza-118",
                 "phone": "+380342713598",
                 "schedule": "10:00 - 20:00",
-                "imageUrl": ""
+                "imageUrl": "Magento_Cms/images/two.jpeg"
             }],
             "83664": [
+                {
+                    "id": "6",
+                    "name": "No BROCARD",
+                    "mall": "ТЦ АRKADIA",
+                    "address": "вул. Борщагівська, 154А",
+                    "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-tts-arkadia-120",
+                    "phone": "+380444953290",
+                    "schedule": "10:00 - 21:00",
+                    "imageUrl": "Magento_Cms/images/three.jpeg"
+                },
+                {
+                    "id": "6",
+                    "name": "No BROCARD",
+                    "mall": "ТЦ АRKADIA",
+                    "address": "вул. Борщагівська, 154А",
+                    "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-tts-arkadia-120",
+                    "phone": "+380444953290",
+                    "schedule": "10:00 - 21:00",
+                    "imageUrl": "Magento_Cms/images/four.jpeg"
+                },
                 {
                     "id": "6",
                     "name": "BROCARD",
@@ -264,7 +335,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-tts-arkadia-120",
                     "phone": "+380444953290",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": "http://upgrade-brocard.loc/media/brocard_shop/image/Brocard_Kiev_Gorodok_Gelari_2_1.jpg"
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 },
                 {
                     "id": "8",
@@ -274,7 +345,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-tk-olimpiyskiy-127",
                     "phone": "+380442068362",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": "http://upgrade-brocard.loc/media/brocard_shop/image/14-12-10_129-1_1.png"
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "10",
@@ -284,7 +355,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-tts-piramida-132",
                     "phone": "+380444957062",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": "http://upgrade-brocard.loc/media/brocard_shop/image/Sky_Mall11_1.png"
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 },
                 {
                     "id": "14",
@@ -294,7 +365,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-tts-arkadia-138",
                     "phone": "+380445737065",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": "http://upgrade-brocard.loc/media/brocard_shop/image/Sky_Mall11_2.png"
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "22",
@@ -304,7 +375,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-trts-magelan-163",
                     "phone": "+380443323162",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "24",
@@ -314,7 +385,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-trts-cosmopolite-169",
                     "phone": "+380442001594",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/three.jpeg"
                 },
                 {
                     "id": "25",
@@ -324,7 +395,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-trts-aladdin-171",
                     "phone": "+380442290974",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": "http://upgrade-brocard.loc/media/brocard_shop/image/vstrechayte-stendy-wunder2-v-magazinakh-brocard-93920418371756_small4_4.png"
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 },
                 {
                     "id": "26",
@@ -334,7 +405,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-trts-komod-172",
                     "phone": "+380445857055",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "27",
@@ -344,7 +415,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-trts-dream-town-173",
                     "phone": "+380444268989",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/four.jpeg"
                 },
                 {
                     "id": "33",
@@ -354,7 +425,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-tts-promenada-park-182",
                     "phone": "+380445961949",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 },
                 {
                     "id": "36",
@@ -364,7 +435,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-tts-livoberezhniy-188",
                     "phone": "+380442290975",
                     "schedule": "9:00 - 21:00",
-                    "imageUrl": "http://upgrade-brocard.loc/media/brocard_shop/image/vstrechayte-stendy-wunder2-v-magazinakh-brocard-93920418371756_small4_5.png"
+                    "imageUrl": "Magento_Cms/images/three.jpeg"
                 },
                 {
                     "id": "41",
@@ -374,7 +445,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/mac-tts-globus-1-liniya-197",
                     "phone": "+380443711106",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "65",
@@ -384,7 +455,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-tts-globus-1-liniya-51",
                     "phone": "+380443711109",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": "http://upgrade-brocard.loc/media/brocard_shop/image/Sky_Mall11_6.png"
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 },
                 {
                     "id": "74",
@@ -394,7 +465,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-trts-mandarin-plaza-54",
                     "phone": "+380442309513",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 },
                 {
                     "id": "75",
@@ -404,7 +475,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/mac-trts-dream-town-541",
                     "phone": "+380443384870",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": "http://upgrade-brocard.loc/media/brocard_shop/image/Sky_Mall11_7.png"
+                    "imageUrl": "Magento_Cms/images/three.jpeg"
                 },
                 {
                     "id": "79",
@@ -414,7 +485,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-tts-univermag-ukraina-59",
                     "phone": "+380444961661",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 },
                 {
                     "id": "81",
@@ -424,7 +495,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-tts-promenada-center-64",
                     "phone": "+380444558926",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": "http://upgrade-brocard.loc/media/brocard_shop/image/14-12-10_129-1_7.png"
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "84",
@@ -434,7 +505,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-trts-dream-town-2-680",
                     "phone": "+380445369995",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": "http://upgrade-brocard.loc/media/brocard_shop/image/Sky_Mall11_9.png"
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "97",
@@ -444,7 +515,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-trts-rayon-768",
                     "phone": "+380443711500",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 },
                 {
                     "id": "105",
@@ -454,7 +525,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-trts-ocean-plaza-788",
                     "phone": "+380443383752",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/three.jpeg"
                 },
                 {
                     "id": "106",
@@ -464,7 +535,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-tts-skymall-790",
                     "phone": "+380443711928",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/four.jpeg"
                 },
                 {
                     "id": "108",
@@ -474,7 +545,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-trts-art-mall-794",
                     "phone": "+380443383756",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 },
                 {
                     "id": "111",
@@ -484,7 +555,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-trk-lavina-mall-u-fontana-806",
                     "phone": "+380443383145",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "112",
@@ -494,7 +565,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-trk-lavina-mall-808",
                     "phone": "+380443383148",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 },
                 {
                     "id": "113",
@@ -504,7 +575,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/kiehls-trts-gulliver-828",
                     "phone": "+380443383761",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/three.jpeg"
                 },
                 {
                     "id": "120",
@@ -514,7 +585,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-trts-gulliver-842",
                     "phone": "+380443641277",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "123",
@@ -524,7 +595,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-tts-ashan-rive-gauche-850",
                     "phone": "+380443379116",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "124",
@@ -534,7 +605,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-tts-gorodok-gallery-854",
                     "phone": "+380443379114",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/four.jpeg"
                 },
                 {
                     "id": "131",
@@ -544,7 +615,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-trts-arena-city-88",
                     "phone": "+380444963135",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 },
                 {
                     "id": "136",
@@ -554,7 +625,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/test_shop_test",
                     "phone": "+380111111111",
                     "schedule": "ПН-СБ 10:00 – 20:00, НД 11:00 – 19:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "107",
@@ -564,7 +635,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/kiiv/brocard-trk-prospekt-792",
                     "phone": "+380443383753",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/three.jpeg"
                 }
             ],
             "83665": [{
@@ -575,7 +646,7 @@ define([
                 "link": "http://upgrade-brocard.loc/ua/shops/kremenchuk/brocard-tts-amstor-133",
                 "phone": "+380536730055",
                 "schedule": "10:00 - 21:00",
-                "imageUrl": ""
+                "imageUrl": "Magento_Cms/images/one.jpeg"
             }],
             "83666": [{
                 "id": "17",
@@ -585,7 +656,7 @@ define([
                 "link": "http://upgrade-brocard.loc/ua/shops/kriviy-rig/brocard-trk-sonyachna-galereya-141",
                 "phone": "+380564904887",
                 "schedule": "10:00 - 21:00",
-                "imageUrl": ""
+                "imageUrl": "Magento_Cms/images/one.jpeg"
             }],
             "83667": [{
                 "id": "110",
@@ -595,7 +666,7 @@ define([
                 "link": "http://upgrade-brocard.loc/ua/shops/kropivnitskiy/brocard-tts-depo-t-center-798",
                 "phone": "+380522597210",
                 "schedule": "10:00 - 21:00",
-                "imageUrl": ""
+                "imageUrl": "Magento_Cms/images/two.jpeg"
             }],
             "83668": [
                 {
@@ -606,7 +677,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/lutsk/brocard-trts-portcity-529",
                     "phone": "+380674625113",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/three.jpeg"
                 },
                 {
                     "id": "80",
@@ -616,7 +687,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/lutsk/brocard-63",
                     "phone": "+380332774425",
                     "schedule": "ПН-СБ 10:00 – 20:00, НД 11:00 – 18:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/four.jpeg"
                 }
             ],
             "83669": [
@@ -628,7 +699,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/lviv/brocard-trts-king-cross-leopolis-178",
                     "phone": "+380322295801",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 },
                 {
                     "id": "73",
@@ -638,7 +709,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/lviv/brocard-tts-forum-lviv-539",
                     "phone": "+380322430125",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "89",
@@ -648,7 +719,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/lviv/brocard-tts-opera-passage-69",
                     "phone": "+380322553717",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/three.jpeg"
                 },
                 {
                     "id": "115",
@@ -658,7 +729,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/lviv/brocard-trts-victoria-gardens-832",
                     "phone": "+380322532719",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 },
                 {
                     "id": "127",
@@ -668,7 +739,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/lviv/brocard-strts-spartak-860",
                     "phone": "+380322531269",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 }
             ],
             "83670": [
@@ -680,7 +751,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/mariupol/brocard-tts-m-cube3-gallery-119",
                     "phone": "+380629402034",
                     "schedule": "10:00 - 20:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/four.jpeg"
                 },
                 {
                     "id": "104",
@@ -690,7 +761,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/mariupol/brocard-trts-portcity-784",
                     "phone": "+380629419212",
                     "schedule": "ПН-ЧТ 10:00 – 21:00, ПТ-НД 10:00 – 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 }
             ],
             "83671": [
@@ -702,7 +773,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/mikolaiv/brocard-trts-sity-center-115",
                     "phone": "+380512582834",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/three.jpeg"
                 }],
             "83672": [
                 {
@@ -713,7 +784,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/odesa/brocard-trts-riviera-174",
                     "phone": "+380487965282",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "92",
@@ -723,7 +794,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/odesa/brocard-trts-sity-center-694",
                     "phone": "+380487057820",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 },
                 {
                     "id": "96",
@@ -733,7 +804,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/odesa/brocard-tts-panorama-766",
                     "phone": "+380487031910",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "109",
@@ -743,7 +814,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/odesa/brocard-trts-fontansky-center-796",
                     "phone": "+380482399387",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/three.jpeg"
                 },
                 {
                     "id": "125",
@@ -753,7 +824,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/odesa/brocard-trts-sity-center-856",
                     "phone": "+380487872645",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "132",
@@ -763,7 +834,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/odesa/brocard-tts-evropa-90",
                     "phone": "+380487285190",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/four.jpeg"
                 },
                 {
                     "id": "133",
@@ -773,7 +844,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/odesa/brocard-tts-sady-pobedy-95",
                     "phone": "+380487853673",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 }
             ],
             "83673": [
@@ -785,7 +856,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/poltava/brocard-trts-konkord-112",
                     "phone": "+380532228991",
                     "schedule": "9:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "9",
@@ -795,7 +866,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/poltava/brocard-trts-ekvator-131",
                     "phone": "+380532615743",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "71",
@@ -805,7 +876,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/poltava/brocard-td-tsum-535",
                     "phone": "+380674423717",
                     "schedule": "ПН-СБ 10:00 – 20:00, НД 10:00 – 18:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/three.jpeg"
                 }
             ],
             "83674": [
@@ -817,7 +888,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/rivne/brocard-trts-ekvator-136",
                     "phone": "+380362460075",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "98",
@@ -827,7 +898,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/rivne/brocard-tts-zlata-plaza-772",
                     "phone": "+380362460342",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 }
             ],
             "83675": [{
@@ -838,7 +909,7 @@ define([
                 "link": "http://upgrade-brocard.loc/ua/shops/sumi/brocard-tts-manufaktura-782",
                 "phone": "+380674344951",
                 "schedule": "10:00 - 21:00",
-                "imageUrl": ""
+                "imageUrl": "Magento_Cms/images/four.jpeg"
             }],
             "83676": [{
                 "id": "12",
@@ -848,7 +919,7 @@ define([
                 "link": "http://upgrade-brocard.loc/ua/shops/ternopil/brocard-trts-podolyani-135",
                 "phone": "+380352477903",
                 "schedule": "10:00 - 21:00",
-                "imageUrl": ""
+                "imageUrl": "Magento_Cms/images/three.jpeg"
             }],
             "83677": [
                 {
@@ -859,7 +930,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/uzhgorod/brocard-tts-dastor-552",
                     "phone": "+380673294272",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "78",
@@ -869,7 +940,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/uzhgorod/brocard-tts-new-plaza-572",
                     "phone": "+380949183771",
                     "schedule": "10:00 - 20:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 }
             ],
             "83678": [
@@ -881,7 +952,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/harkiv/brocard-tts-atrium-113",
                     "phone": "+380577007709",
                     "schedule": "ПН-СБ 10:00 – 20:00, НД 11:00 – 19:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "29",
@@ -891,7 +962,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/harkiv/brocard-tots-platinum-plaza-175",
                     "phone": "+380577284174",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "49",
@@ -901,7 +972,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/harkiv/brocard-trts-karavan-43",
                     "phone": "+380577601737",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 },
                 {
                     "id": "83",
@@ -911,7 +982,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/harkiv/brocard-tots-ave-plaza-678",
                     "phone": "+380577143695",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/three.jpeg"
                 },
                 {
                     "id": "85",
@@ -921,7 +992,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/harkiv/brocard-trts-dafi-682",
                     "phone": "+380577529330",
                     "schedule": "10:00 - 22:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 }
             ],
             "83679": [
@@ -933,7 +1004,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/herson/brocard-trts-fabrika-698",
                     "phone": "+380552355049",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "134",
@@ -943,7 +1014,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/herson/brocard-tts-ksenia",
                     "phone": "+380661148591",
                     "schedule": "Пн.-Сб.: 10:00 - 22:00 Вс.: 11:00 - 21:00",
-                    "imageUrl": "http://upgrade-brocard.loc/media/brocard_shop/image/Brocard_Kiev_Gorodok_Gelari_1.jpg"
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 }
             ],
             "83680": [
@@ -955,7 +1026,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/hmelnitskiy/brocard-trts-oazis-139",
                     "phone": "+380382719010",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/four.jpeg"
                 },
                 {
                     "id": "93",
@@ -965,7 +1036,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/hmelnitskiy/brocard-tgrk-libid-plaza-696",
                     "phone": "+380382700559",
                     "schedule": "10:00 - 20:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/three.jpeg"
                 }
             ],
             "83681": [
@@ -977,7 +1048,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/cherkasi/brocard-tts-dnipro-plaza-177",
                     "phone": "+380472726723",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "100",
@@ -987,7 +1058,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/cherkasi/brocard-trts-lubava-776",
                     "phone": "+380472599818",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 }
             ],
             "83682": [{
@@ -998,7 +1069,7 @@ define([
                 "link": "http://upgrade-brocard.loc/ua/shops/chernigiv/brocard-trts-hollywood-mall-537",
                 "phone": "+380462613940",
                 "schedule": "10:00 - 21:00",
-                "imageUrl": ""
+                "imageUrl": "Magento_Cms/images/three.jpeg"
             }],
             "83683": [
                 {
@@ -1009,7 +1080,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/chernivtsi/brocard-tts-maydan-700",
                     "phone": "+380372950201",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/one.jpeg"
                 },
                 {
                     "id": "101",
@@ -1019,7 +1090,7 @@ define([
                     "link": "http://upgrade-brocard.loc/ua/shops/chernivtsi/brocard-trts-depo-t-center-778",
                     "phone": "+380372586619",
                     "schedule": "10:00 - 21:00",
-                    "imageUrl": ""
+                    "imageUrl": "Magento_Cms/images/two.jpeg"
                 }
             ]
         }

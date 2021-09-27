@@ -5,37 +5,43 @@
 
 define([
     'uiComponent',
-    'ko',
-    'sidebarCities'
-], function (Component, ko, sidebarCities) {
+    'ko'
+], function (Component, ko) {
     'use strict';
     return Component.extend({
         defaults: {
             template: 'Magento_Cms/sidebar-stores',
             cityStores: ko.observableArray([]),
+            checkedStores: ko.observableArray([]),
+            storeNames: ko.observableArray([]),
+            showStoreNames: ko.observable(),
             listens: {
                 "citiesSidebar:cityStores": "hasChanged"
             }
         },
 
-        storeNames: ko.observableArray([]),
-
         initialize: function () {
             this._super();
 
+            this.renderStoreNames();
+
+            return this;
+        },
+
+        renderStoreNames: function () {
             let self = this;
 
             this.cityStores.subscribe(cityStores => {
+                self.checkedStores([]);
                 self.storeNames([]);
                 cityStores.forEach( store => {
-
                     if( !self.storeNames().includes(store.name) ) {
                         self.storeNames.push(store.name);
                     }
                 })
 
-                console.log(self.storeNames());
+                self.storeNames().length > 1 ? self.showStoreNames(true) : self.showStoreNames(false);
             })
-        },
+        }
     })
 });
